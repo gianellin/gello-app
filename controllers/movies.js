@@ -1,4 +1,5 @@
-const Movie = require('../models/movie');
+import Movie from '../models/movie.js';
+
 
 module.exports = {
 	create,

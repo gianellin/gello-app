@@ -1,11 +1,8 @@
-const mongoose = require('mongoose');
+import mongoose from "mongoose";
 const Schema = mongoose.Schema;
 
 const movieSchema = new Schema(
 	{
-		movieTitle: {
-			type: String
-		},
 		tmdbId: {
 			type: Number
 		},
@@ -35,7 +32,9 @@ const movieSchema = new Schema(
 			min: 1,
 			max: 100
 		},
-		userId: String
+		userId: {
+			type: String
+		},
 	},
 	{ timestamps: true }
 );

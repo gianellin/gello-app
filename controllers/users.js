@@ -1,18 +1,33 @@
 import User from '../models/user.js'
-import Movie from '../models/movie.js'
 import jwt from 'jsonwebtoken'
 const SECRET = process.env.SECRET;
 
 
-
-
 export default {
   signup,
-  login
+  login,
+  search,
+  profile,
 };
+async function profile(req, res){
+  try {
+    // First find the user using the params from the request
+    // findOne finds first match, its useful to have unique usernames!
+    const user = await User.findOne({username: req.params.username})
+    // Then find all the posts that belong to that user
+    if(!user) return res.status(404).json({error: 'User not found'})
 
+    const posts = await Post.find({user: user._id}).populate("user").exec();
+    console.log(posts, ' this posts')
+    res.status(200).json({data: posts, user: user})
+  } catch(err){
+    console.log(err)
+    res.status(400).json({err})
+  }
+}
 
 async function signup(req, res) {
+  console.log(req.body, req.file, "signup router")
   const user = new User(req.body);
   try {
     await user.save(); // user model .pre('save') function is runnning which hashes the password
@@ -42,6 +57,14 @@ async function login(req, res) {
   } catch (err) {
     return res.status(401).json(err);
   }
+}
+
+async function search(req, res) {
+	try {
+
+	} catch (err) {
+
+	}
 }
 
 /*----- Helper Functions -----*/

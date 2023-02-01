@@ -49,7 +49,7 @@ const Div = styled.div`
 const LandingPage = (props) => {
 	return (
 		<Div>
-			<motion.img src="https://i.imgur.com/Cwb6HA5.png" />
+			<motion.img src="#" />
 			{props.user ? (
 				<div className="signupBox">
 					<div className="signupText">
