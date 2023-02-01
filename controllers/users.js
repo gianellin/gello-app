@@ -1,6 +1,8 @@
 import User from '../models/user.js'
+import Movie from '../models/movie.js'
 import jwt from 'jsonwebtoken'
 const SECRET = process.env.SECRET;
+
 
 
 

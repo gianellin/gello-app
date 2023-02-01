@@ -17,6 +17,8 @@ import './config/database.js'
 // Require controllers here
 const app = express();
 
+const moviesRouter =require(' ./routes/movies');
+const usersRouter =require('./routes/users')
 // console.log(assetsRouter)
 // add in when the app is ready to be deployed
 // app.use(favicon(path.join(__dirname, 'build', 'favicon.ico')));
@@ -31,7 +33,9 @@ import auth from './config/auth.js'
 app.use(auth); 
 // api routes must be before the "catch all" route
 import userRoutes from './routes/api/users.js';
+import movieRoutes from './routes/api/movies.js';
 
+app.use('/api/movies', moviesRoutes);
 app.use('/api/users', userRoutes);
 // "catch all" route
 app.get('/*', function(req, res) {
