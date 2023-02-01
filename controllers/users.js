@@ -15,9 +15,9 @@ export default {
 async function signup(req, res) {
   const user = new User(req.body);
   try {
-    await user.save();
+    await user.save(); // user model .pre('save') function is runnning which hashes the password
     const token = createJWT(user);
-    res.json({ token });
+    res.json({ token }); // set('toJSON'), in user model is being called, and deleting the users password
   } catch (err) {
     // Probably a duplicate email
     res.status(400).json(err);
@@ -33,7 +33,7 @@ async function login(req, res) {
     user.comparePassword(req.body.password, (err, isMatch) => {
       
       if (isMatch) {
-        const token = createJWT(user);
+        const token = createJWT(user); // when some logs in we create a JWT
         res.json({token});
       } else {
         return res.status(401).json({err: 'bad credentials'});

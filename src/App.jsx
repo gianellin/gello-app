@@ -1,5 +1,8 @@
+import React from 'react';
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
+// import { utilsSearch } from '../../utils/movie-api-search';
+// import Navbar from '../../components/Navbar/Navbar';
 
 import LoginPage from "./pages/LoginPage/LoginPage";
 

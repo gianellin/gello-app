@@ -11,6 +11,8 @@ const userSchema = new mongoose.Schema({
   timestamps: true
 });
 
+
+//EVENT LISTENER 1 -->delete the password on the object, so when we senmd the user data back to the client -no password! :D
 userSchema.set('toJSON', {
   transform: function(doc, ret) {
     // remove the password property when serializing doc to JSON
@@ -19,6 +21,7 @@ userSchema.set('toJSON', {
   }
 });
 
+//EVENT LISTENER 2 same thing here with the populate method
 // this is if you populate the user
 userSchema.set('toObject', {
   transform: (doc, ret, opt) => {
@@ -26,6 +29,7 @@ userSchema.set('toObject', {
    return ret;
   }
 })
+
 
 // DO NOT DEFINE instance methods with arrow functions, 
 // they prevent the binding of this
@@ -44,6 +48,7 @@ userSchema.pre('save', function(next) {
   });
 });
 
+//The user password the user is creating is store as a hash(trypassword algorithm) in the DB --> line ... bcrypt.hash
 userSchema.methods.comparePassword = function(tryPassword, cb) {
     console.log(cb, ' this is cb')
   // 'this' represents the document that you called comparePassword on

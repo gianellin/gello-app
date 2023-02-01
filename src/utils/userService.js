@@ -1,3 +1,6 @@
+//Service: this deals with the type of request the user may want to make on the client,
+// so what type of http requests the user may make to the express server
+
 import tokenService from './tokenService';
 
 const BASE_URL = '/api/users/';
@@ -9,7 +12,7 @@ function signup(user) {
     // what do datatype do you need to change this too?
     body: JSON.stringify(user)
   })
-  .then(res => {
+  .then(res => { //response from express app.
     if (res.ok) return res.json();
     // Probably a duplicate email
     throw new Error('Email already taken!');
