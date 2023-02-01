@@ -23,7 +23,7 @@ const usersRouter =require('./routes/users')
 // add in when the app is ready to be deployed
 // app.use(favicon(path.join(__dirname, 'build', 'favicon.ico')));
 app.use(logger('dev'));
-app.use(express.json());
+app.use(express.json()); // sets up our server to recieve JSON requests, this defines req.body for json requests
 // app.use("/src", assetsRouter);
 // Configure the auth middleware
 // This decodes the jwt token, and assigns
@@ -35,7 +35,7 @@ app.use(auth);
 import userRoutes from './routes/api/users.js';
 import movieRoutes from './routes/api/movies.js';
 
-app.use('/api/movies', moviesRoutes);
+app.use('/api/movies', movieRoutes);
 app.use('/api/users', userRoutes);
 // "catch all" route
 app.get('/*', function(req, res) {
