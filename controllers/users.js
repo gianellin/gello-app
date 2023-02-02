@@ -29,11 +29,11 @@ async function profile(req, res){
     if(!user) return res.status(404).json({error: 'User not found'})
 
     const movies = await Movie.find({user: user._id}).populate("user").exec();
-    console.log(movies, ' this movies')
-    res.status(200).json({data: movies, user: user})
+    console.log(movies, ' this users movies')
+    res.status(200).json({user: user, data: movies})
   } catch(err){
-    console.log(err)
-    res.status(400).json({err})
+    console.log(err.message, "<- profile Ctrlr")
+    res.status(400).json({err});
   }
 }
 

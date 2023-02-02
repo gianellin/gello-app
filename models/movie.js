@@ -5,11 +5,12 @@ const likesSchema = mongoose.Schema({
   userId: { type: mongoose.Schema.Types.ObjectId }
 })
 
-// A post has many likes, a like belongs to a Movie
 const movieSchema = new mongoose.Schema({
-    user: { type: mongoose.Schema.Types.ObjectId, ref: 'User'}, // referencing a model
+    user: { type: mongoose.Schema.Types.ObjectId, ref: 'User'},
+    category: String,
+    title: {type: String, required:true},
+    description: String,
     photoUrl: String,
-    caption: String,
     likes: [likesSchema] // embedded schema// One Movie has many Likes!
     // One Post has many Likes, One to many relationship
     // we are using embedding because likes will always be with the movie, 

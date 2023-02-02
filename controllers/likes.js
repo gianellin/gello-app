@@ -13,7 +13,6 @@ async function create(req, res){
         await movie.save()// save it
         res.status(201).json({data: 'like added'})
     } catch(err){
-       
         res.status(400).json({err})
     }
     

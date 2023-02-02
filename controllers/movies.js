@@ -10,6 +10,7 @@ const BUCKET_NAME = process.env.BUCKET_NAME;
 export default {
   create,
   index,
+  deleteMovie,
 };
 
 function create(req, res) {
@@ -55,5 +56,13 @@ async function index(req, res) {
     res.status(200).json({ data: movies });
   } catch (err) {
     res.status(400).json({ err });
+  }
+}
+async function deleteMovie(req, res) {
+  try {
+      await Trip.findByIdAndDelete(req.params.id);
+      res.json({ data: 'trip removed' })
+  } catch (err) {
+      res.status(400).json({ err });
   }
 }

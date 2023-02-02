@@ -15,8 +15,8 @@ function AddMovieForm({handleAddMovie}) {
 	setPhoto(e.target.files[0])
   }
 
-  function handleSubmit(e){
-	e.preventDefault();
+  function handleSubmit(event){
+	event.preventDefault();
 
 	// we have to make form data because we are sending over a photo
 	// to our express server
