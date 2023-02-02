@@ -1,10 +1,10 @@
-//SERVER ROUTES
-export const USER_SERVER = '/api/users';
+const baseUrl = process.env.TMDB_BASE_URL;
+const key = process.env.TMDB_KEY;
 
+const getUrl = (endpoint, params) => {
+  const qs = new URLSearchParams(params);
 
+  return `${baseUrl}${endpoint}?api_key=${key}&${qs}`;
+};
 
-export const API_URL = 'https://api.themoviedb.org/3/';
-export const API_KEY = 'b6595c31be2a675dec9d16dab4b7d4d8';
-
-
-export const IMAGE_BASE_URL ='http://image.tmdb.org/t/p/';
+export default { getUrl };
