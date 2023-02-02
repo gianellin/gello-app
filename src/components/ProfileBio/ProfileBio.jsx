@@ -1,6 +1,6 @@
 import { Image, Grid, Segment } from "semantic-ui-react";
 
-function DashboardBio({ user }) {
+function ProfileBio({ user }) {
   return (
     <Grid textAlign="center" columns={2}>
       <Grid.Row>
@@ -28,5 +28,5 @@ function DashboardBio({ user }) {
   );
 }
 
-export default DashboardBio;
+export default ProfileBio;
 

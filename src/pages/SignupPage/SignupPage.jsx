@@ -59,6 +59,9 @@ function SignUpPage({handleSignUpOrLogin}) {
 		setError('Check your terminal, there was an error signing up')
 	}
 
+
+
+
   }
 
   function handleChange(e) {
@@ -139,4 +142,3 @@ function SignUpPage({handleSignUpOrLogin}) {
 }
 
 export default SignUpPage;
-

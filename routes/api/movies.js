@@ -1,14 +1,14 @@
 import express from 'express';
 const router = express.Router();
-import movieCtrl from '../controllers/movies.js'
+import moviesCtrl  from '../../controllers/movies.js';
 import multer from 'multer'
 const upload = multer()
+// /*---------- Public Routes ----------*/
 
-//Update, and Delete and maybe compareIndex??
-router.use(require('../config/auth'));
-router.post('/', movieCtrl.create);
-router.get('/index', movieCtrl.index);
+// single('photo') matches formData.append('photo', photo) in addPuppyForm
 
-
-
+// this the route that processes a request from "React"/browser
+// to create a post
+router.post('/', upload.single('photo'), moviesCtrl.create);
+router.get('/', moviesCtrl.index)
 export default router;

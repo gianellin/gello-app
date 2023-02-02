@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { Header, Segment, Image, Icon } from "semantic-ui-react";
 
-function Navbar({ loggedUser, handleLogout }) {
+function PageHeader({ loggedUser, handleLogout }) {
   return (
     <Segment clearing>
       <Header as="h2" floated="right">
@@ -28,4 +28,4 @@ function Navbar({ loggedUser, handleLogout }) {
   );
 }
 
-export default Navbar;
+export default PageHeader;
