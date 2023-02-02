@@ -60,8 +60,6 @@ function SignUpPage({handleSignUpOrLogin}) {
 	}
 
 
-
-
   }
 
   function handleChange(e) {
@@ -116,10 +114,10 @@ function SignUpPage({handleSignUpOrLogin}) {
               required
             />
             <Form.TextArea
-              label="bio"
+              label="About"
               name="bio"
               value={state.bio}
-              placeholder="Tell us more about your dogs..."
+              placeholder="Tells about yourself and any funfact for all movie watchers"
               onChange={handleChange}
             />
             <Form.Field>

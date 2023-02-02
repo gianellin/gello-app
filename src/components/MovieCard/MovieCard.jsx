@@ -18,11 +18,11 @@ function MovieCard({ movie, isProfile, addLike, removeLike, deleteMovie, loggedU
       {isProfile ? (
         ""
       ) : (
-        <Card.Content textAlign="center">
+        <Card.Content textAlign="left">
           <Card.Header>
             <Link to={`/${movie.user.username}`}>
               <Image
-                size="medium"
+                size="large"
                 avatar
                 src={
                   movie.user.photoUrl
@@ -38,7 +38,7 @@ function MovieCard({ movie, isProfile, addLike, removeLike, deleteMovie, loggedU
 
       <Image src={`${movie?.photoUrl}`} wrapped ui={false} />
       <Card.Content>
-        <Card.Description>{movie.caption}</Card.Description>
+        <Card.Description>{movie.title}</Card.Description>
       </Card.Content>
       <Card.Content extra textAlign={"right"}>
         <Icon name={"heart"} size="large" color={likeColor} onClick={clickHandler}/>

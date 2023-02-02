@@ -16,10 +16,6 @@ export default function MovieDisplay({movies, numPhotosCol, isProfile, loading, 
       )
     }
 
-
-
-
-
     return (
         <Card.Group itemsPerRow={numPhotosCol} stackable>
         {movies.map((movie) => {

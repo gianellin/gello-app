@@ -32,15 +32,15 @@ export function getAll() {
 	.then(res => res.json());
   }
 
-  export function deleteMovie(movieId) {
-    return fetch(`${BASE_URL}/${movieId}`, {
-        method: 'DELETE',
-        headers: {
-            'Content-Type': 'application/json',
-            Authorization: "Bearer " + tokenService.getToken(),
-        }
-    }).then((res) => {
-        if (res.ok) return res.json();
-        throw new Error(res.error);
-    })
-}
+//   export function deleteMovie(movieId) {
+//     return fetch(`${BASE_URL}/${movieId}`, {
+//         method: 'DELETE',
+//         headers: {
+//             'Content-Type': 'application/json',
+//             Authorization: "Bearer " + tokenService.getToken(),
+//         }
+//     }).then((res) => {
+//         if (res.ok) return res.json();
+//         throw new Error(res.error);
+//     })
+// }

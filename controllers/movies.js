@@ -1,5 +1,5 @@
 import User from "../models/user.js";
-import Post from '../models/movie.js';
+import Movie from '../models/movie.js';
 import {s3} from '../config/s3-config.js';
 
 import { v4 as uuidv4 } from "uuid";
@@ -12,7 +12,6 @@ export default {
   index,
   deleteMovie,
 };
-
 function create(req, res) {
   console.log(req.user, " <- req.user", req.body, req.file)
 
@@ -29,10 +28,10 @@ function create(req, res) {
     if (err) return res.status(400).json({err: 'Check terminal error from aws'})
 
     try {
-      // adding our post information to the database
+      // adding our information to the database
       const movie = await Movie.create({
         user: req.user._id,
-        caption: req.body.caption,
+        title: req.body.title,
         photoUrl: data.Location // <- this is from aws, it is the URL that our picture exists at in s3 bucket
       })
 

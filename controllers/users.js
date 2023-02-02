@@ -7,7 +7,7 @@ const SECRET = process.env.SECRET;
 
 // We'll use this module to help us generate random names for our photo files on aws
 import { v4 as uuidv4 } from 'uuid';
-import movies from './movies.js';
+
 
 // So we don't have to worry about people having different bucket names we'll make the bucketname an environment variable
 const BUCKET_NAME = process.env.BUCKET_NAME
@@ -30,7 +30,7 @@ async function profile(req, res){
 
     const movies = await Movie.find({user: user._id}).populate("user").exec();
     console.log(movies, ' this users movies')
-    res.status(200).json({user: user, data: movies})
+    res.status(200).json({user: user, movies: movies})
   } catch(err){
     console.log(err.message, "<- profile Ctrlr")
     res.status(400).json({err});
@@ -65,9 +65,6 @@ async function signup(req, res) {
       console.log(error)
       res.status(400).json(error);
     }
-
-
-
   }) // end of the s3 callback
 } // end of signup
 
