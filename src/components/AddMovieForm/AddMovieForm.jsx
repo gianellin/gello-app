@@ -37,7 +37,13 @@ function AddMovieForm({handleAddMovie}) {
           onChange={handleChange}
           required
         />
-       
+        <Form.Input
+          className="form-control"
+          type="file"
+          name="photo"
+          placeholder="movie poster"
+          onChange={handleFileInput}
+        />
         <Button type="submit" className="btn">
           ADD MOVIE
         </Button>

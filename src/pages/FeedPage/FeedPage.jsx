@@ -100,10 +100,11 @@ function FeedPage({loggedUser, handleLogout}) {
         </Grid.Column>
       </Grid.Row>
       <Grid.Row>
-        <Grid.Column style={{ maxWidth: 450 }}>
+        <Grid.Column style={{ maxWidth: 1200 }}>
+          
           <MovieDisplay
             movies={movies}
-            numPhotosCol={1}
+            numPhotosCol={4}
             isProfile={false}
             loading={loading}
             addLike={addLike}

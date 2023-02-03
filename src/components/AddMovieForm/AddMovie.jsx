@@ -1,27 +1,33 @@
 
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
+import { Form, Segment, Button } from "semantic-ui-react";
 
-export default function Form({ liftMovieTitle }) {
+function AddMovie({handleSubmit}) {
+    // states - input query, movies
   const [title, setTitle] = useState("");
-  const [movieInfo, setMovieInfo] = useState({});
+  const [movieInfo, setMovieInfo] = useState([]);
 
-  useEffect(() => {
+
+
+
+  // states - input query=title, movies
+
+ useEffect(() => {
     console.log("use Effect is good to go");
     
-    const movieUrl = `https://api.themoviedb.org/3/movie/550?api_key=b6595c31be2a675dec9d16dab4b7d4d8`;
+    const movieUrl = `https://api.themoviedb.org/3/search/movie?api_key=b6595c31be2a675dec9d16dab4b7d4d8&language=en-US&query=${title}&page=1&include_adult=false`;
 
     async function makeApiCall() {
       try {
         // this is fetching the JSON and shows up as "Response" in the console
-        const responseJson = await fetch(movieUrl);
-        console.log(responseJson);
-
+        const res= await fetch(movieUrl);
         // this is changes response into JS object called data thats workable--> parsing it?
-        const data = await responseJson.json();
+        const data = await res.json();
         console.log(data);
 
         // this is getting the 2nd index in the data array of the api, but how do i get it to display??
-        setMovieInfo();
+        setMovieInfo(data.results);
+        console.log(data.results)
       } catch (err) {
         console.log(err);
       }
@@ -31,6 +37,7 @@ export default function Form({ liftMovieTitle }) {
 
   function handleChange(e) {
     setTitle(e.target.value);
+    //update the "title=query" state with that value
   }
 
   function handleSubmit(e) {
@@ -40,18 +47,25 @@ export default function Form({ liftMovieTitle }) {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
-      <input
-        type="text"
-        name="title"
-        placeholder="search MOVIE"
-        onChange={handleChange}
-        value={title}
-      />
-      <button type="submit">Search</button>
-    </form>
+    <Segment>
+        <Form onSubmit={handleSubmit}>
+            <Form.Input
+                type="text"
+                name="title"
+                placeholder="What is the movie title?"
+                value={title}
+                onChange={handleChange}
+                required
+            />
+            <Button type="submit" className="btn">
+                Search
+            </Button>
+        </Form>
+    </Segment>
   );
 }
+
+export default AddMovie;
 
 
 
