@@ -71,11 +71,20 @@ function FeedPage({loggedUser, handleLogout}) {
       setLoading(false);
     }
   }
+  
+  async function deleteMovie(movieId) {
+    try {
+        const response = await movieAPI.deleteMovie(movieId);
+        getMovies();
 
+    } catch(err){
+        console.log(err.message, 'error in deleting movie')
+        setError('error deleting movie -> try again')
+    }
+}
   useEffect(() => {
-
     getMovies();
-  }, []); // This is useEffect runs once when the Feed component loads
+  }, []); 
 
   if (error) {
     return (
@@ -109,7 +118,7 @@ function FeedPage({loggedUser, handleLogout}) {
             loading={loading}
             addLike={addLike}
             removeLike={removeLike}
-            // deleteMovie={handleDeleteMovie}
+            deleteMovie={deleteMovie}
             loggedUser={loggedUser}
           />
         </Grid.Column>

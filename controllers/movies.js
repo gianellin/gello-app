@@ -59,9 +59,12 @@ async function index(req, res) {
 }
 async function deleteMovie(req, res) {
   try {
-      await Trip.findByIdAndDelete(req.params.id);
-      res.json({ data: 'trip removed' })
-  } catch (err) {
-      res.status(400).json({ err });
+      const movie = await Movie.findOne({'_id': req.params.id})
+      tag.remove(req.params.id);
+      await tag.save()
+      res.json({data: 'movie successfully deleted'})
+  } catch(err) {
+      console.log(err, '<-- error in Ctrldelete')
+      res.status(400).json({err})
   }
 }

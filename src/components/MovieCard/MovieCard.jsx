@@ -11,6 +11,7 @@ function MovieCard({ movie, isProfile, addLike, removeLike, deleteMovie, loggedU
   const likeColor = likedIndex > -1 ?'red' : 'grey';
   const clickHandler = likedIndex > -1 ? () => 
         removeLike(movie.likes[likedIndex]._id) : () => addLike(movie._id)
+  
 
 
   return (
@@ -36,13 +37,15 @@ function MovieCard({ movie, isProfile, addLike, removeLike, deleteMovie, loggedU
         </Card.Content>
       )}
 
-      <Image src={`${movie?.photoUrl}`} wrapped ui={false} />
+      <Image src={`${movie?.photoUrl}`} wrapped ui={false}/>
       <Card.Content>
         <Card.Description>{movie.title}</Card.Description>
       </Card.Content>
-      <Card.Content extra textAlign={"right"}>
-        <Icon name={"heart"} size="large" color={likeColor} onClick={clickHandler}/>
+      <Card.Content extra textAlign={""} >
+      <Button className="btn" type="submit">+ </Button>
+        <Icon  name={"heart"} size="large" color={likeColor} onClick={clickHandler}/>
         {movie.likes.length} Likes
+        
       </Card.Content>
     </Card>
   );

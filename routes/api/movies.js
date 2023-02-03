@@ -11,4 +11,5 @@ const upload = multer()
 // to create a post
 router.post('/', upload.single('photo'), moviesCtrl.create);
 router.get('/', moviesCtrl.index)
+router.delete('/:id', moviesCtrl.deleteMovie)
 export default router;

@@ -1,10 +1,10 @@
 import React from 'react';
 import { Card, Dimmer, Segment, Image  } from 'semantic-ui-react'
 import MovieCard from '../MovieCard/MovieCard';
-import MovieSearchCard from '../MovieCard/MovieSearchCard';
+// import MovieSearchCard from '../MovieCard/MovieSearchCard';
 import Loader from '../Loader/Loader';
 
-export default function MovieDisplay({movies, numPhotosCol, isProfile, loading, addLike, removeLike, loggedUser}){
+export default function MovieDisplay({movies, numPhotosCol, isProfile, loading, addLike, removeLike, deleteMovie, loggedUser}){
 
     if(loading){
       return (
@@ -20,25 +20,17 @@ export default function MovieDisplay({movies, numPhotosCol, isProfile, loading, 
     return (
         <Card.Group itemsPerRow={numPhotosCol} stackable>
         {movies.map((movie) => {
+          console.log(movie, "this is movie")
           return (
-
-            <>
-            <MovieSearchCard
-              movie={movie}
-              key={movie._id}
-              isProfile={isProfile}
-              addLike={addLike}
-              removeLike={removeLike}
-              loggedUser={loggedUser}
-            />
             <MovieCard
-              movie={movie}
-              key={movie._id}
-              isProfile={isProfile}
-              addLike={addLike}
-              removeLike={removeLike}
-              loggedUser={loggedUser}
-            /></> 
+            movie={movie}
+            key={movie._id}
+            isProfile={isProfile}
+            addLike={addLike}
+            removeLike={removeLike}
+            loggedUser={loggedUser}
+            deleteMovie={deleteMovie}
+            />
           );
         })}
       </Card.Group>

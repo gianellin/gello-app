@@ -28,6 +28,8 @@ app.use(express.json()); // sets up our server to recieve JSON requests, this de
 // the user information to req.user
 import auth from './config/auth.js'
 
+app.set('view engine', 'ejs');
+
 app.use(auth); 
 // api routes must be before the "catch all" route
 import userRoutes from './routes/api/users.js';
@@ -40,6 +42,15 @@ app.use('/api', likeRoutes);
 // "catch all" route
 app.get('/*', function(req, res) {
   res.sendFile(path.join(__dirname, 'public', 'index.html'));
+});
+
+
+app.use(express.static(path.join(__dirname, "dist")));
+
+import manifest from './dist/manifest.json' assert {type: "json"};
+
+app.get('/*', function(req, res) {
+  res.render(path.join(__dirname, 'dist', 'index.ejs'), {manifest});
 });
 
 const { PORT = 8000 } = process.env;
