@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import PageHeader from "../../components/PageHeader/PageHeader";
-import AddMovie from "../../components/AddMovieForm/AddMovie";
 import AddMovieForm from "../../components/AddMovieForm/AddMovieForm";
+import AddMovie from "../../components/AddMovieForm/AddMovie";
 import MovieDisplay from "../../components/MovieDisplay/MovieDisplay";
-import Loader from "../../components/Loader/Loader";
+import Loader from "../../components/Loader/Loader"
 import { Grid } from "semantic-ui-react";
 import "./FeedPage.css";
 //importing the utils
@@ -49,16 +49,7 @@ function FeedPage({loggedUser, handleLogout}) {
       setError("Error movie card not created");
     }
   }
-//   async function handleDeleteMovie(movieId) {
-//     try {
-//         const response = await tripAPI.deleteMovie(movieId);
-//         console.log(response, ", delete Movie");
-//         getMovies();
-//     } catch (err) {
-//         console.log(err);
-//         setError("Movie is not deleting");
-//     }
-// }
+
 
   async function getMovies() {
     try {
@@ -72,16 +63,7 @@ function FeedPage({loggedUser, handleLogout}) {
     }
   }
   
-  async function deleteMovie(movieId) {
-    try {
-        const response = await movieAPI.deleteMovie(movieId);
-        getMovies();
-
-    } catch(err){
-        console.log(err.message, 'error in deleting movie')
-        setError('error deleting movie -> try again')
-    }
-}
+  
   useEffect(() => {
     getMovies();
   }, []); 
@@ -91,6 +73,14 @@ function FeedPage({loggedUser, handleLogout}) {
       <>
         <PageHeader handleLogout={handleLogout} loggedUser={loggedUser}/>
         <ErrorMessage error={error} />;
+      </>
+    );
+  }
+  if (loading) {
+    return (
+      <>
+        <PageHeader handleLogout={handleLogout} loggedUser={loggedUser}/>
+        <Loader />;
       </>
     );
   }
@@ -104,7 +94,7 @@ function FeedPage({loggedUser, handleLogout}) {
       </Grid.Row>
       <Grid.Row>
         <Grid.Column style={{ maxWidth: 450 }}>
-          <AddMovie/>
+          {/* <AddMovie /> */}
           <AddMovieForm handleAddMovie={handleAddMovie} />
         </Grid.Column>
       </Grid.Row>
@@ -118,7 +108,6 @@ function FeedPage({loggedUser, handleLogout}) {
             loading={loading}
             addLike={addLike}
             removeLike={removeLike}
-            deleteMovie={deleteMovie}
             loggedUser={loggedUser}
           />
         </Grid.Column>

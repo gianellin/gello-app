@@ -2,15 +2,12 @@
 import React, { useEffect, useState } from "react";
 import { Form, Segment, Button } from "semantic-ui-react";
 
-function AddMovie({handleSubmit}) {
+export default function AddMovie({handleAddSearchPost}) {
     // states - input query, movies
   const [title, setTitle] = useState("");
   const [movieInfo, setMovieInfo] = useState([]);
 
 
-
-
-  // states - input query=title, movies
 
  useEffect(() => {
     console.log("use Effect is good to go");
@@ -23,7 +20,7 @@ function AddMovie({handleSubmit}) {
         const res= await fetch(movieUrl);
         // this is changes response into JS object called data thats workable--> parsing it?
         const data = await res.json();
-        console.log(data);
+        console.log(resdata);
 
         // this is getting the 2nd index in the data array of the api, but how do i get it to display??
         setMovieInfo(data.results);
@@ -33,7 +30,7 @@ function AddMovie({handleSubmit}) {
       }
     }
     makeApiCall();
-  },  []);
+  },  [title]);
 
   function handleChange(e) {
     setTitle(e.target.value);
@@ -55,17 +52,15 @@ function AddMovie({handleSubmit}) {
                 placeholder="What is the movie title?"
                 value={title}
                 onChange={handleChange}
-                required
-            />
+                required/>
             <Button type="submit" className="btn">
-                Search
+              SEARCH
             </Button>
         </Form>
     </Segment>
   );
 }
 
-export default AddMovie;
 
 
 

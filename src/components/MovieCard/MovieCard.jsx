@@ -6,13 +6,12 @@ import { Link } from "react-router-dom";
 function MovieCard({ movie, isProfile, addLike, removeLike, deleteMovie, loggedUser }) {
 
   const likedIndex = movie.likes.findIndex(
-    (like) => like.username === loggedUser.username);
+    like => like.username === loggedUser.username);
   
   const likeColor = likedIndex > -1 ?'red' : 'grey';
   const clickHandler = likedIndex > -1 ? () => 
         removeLike(movie.likes[likedIndex]._id) : () => addLike(movie._id)
   
-
 
   return (
     <Card key={movie._id} raised>
@@ -41,8 +40,8 @@ function MovieCard({ movie, isProfile, addLike, removeLike, deleteMovie, loggedU
       <Card.Content>
         <Card.Description>{movie.title}</Card.Description>
       </Card.Content>
-      <Card.Content extra textAlign={""} >
-      <Button className="btn" type="submit">+ </Button>
+      <Card.Content extra textAlign="right" >
+      <Button className="btn" type="submit" onClick={() => deleteMovie(movie._id)}> - </Button>
         <Icon  name={"heart"} size="large" color={likeColor} onClick={clickHandler}/>
         {movie.likes.length} Likes
         

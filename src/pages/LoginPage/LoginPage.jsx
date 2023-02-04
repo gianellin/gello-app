@@ -52,7 +52,7 @@ export default function LoginPage(props) {
     >
       <Grid.Column style={{ maxWidth: 450 }}>
         <Header as="h2" color="purple" textAlign="center">
-          <Image src="#" /> Log-in to your account
+          <Image src="https://imgur.com/Tmzpkdd.jpg" /> Log-in to your account
         </Header>
         <Form onSubmit={handleSubmit}>
           <Segment stacked>
@@ -84,7 +84,7 @@ export default function LoginPage(props) {
           </Segment>
         </Form>
         <Message>
-          If you don't have an account, <Link to="/signup">Sign Up</Link>
+          New to us? <Link to="/signup">Sign Up</Link>
         </Message>
         {error ? <ErrorMessage error={error} /> : null}
       </Grid.Column>

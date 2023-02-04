@@ -20,18 +20,15 @@ function SignUpPage({handleSignUpOrLogin}) {
 
   const [error, setError] = useState("");
 
-  // initialize the useNavigate hook, which allows us to programatticaly change routes
-  // aka after our signup call in our handleSubmit
-  // navigate is a function that accepts a routes path
+
   const navigate = useNavigate()
 
   async function handleSubmit(e) {
     e.preventDefault(); // stop the browser from submitting the form, we will use fetch. We are using a SPA (single, page, app, no page reloads)
 
-    // before we use our userService function
-    // since we are sending over to the express server a file (photo), we can't send json
+
     // we have to convert our data into formData!
-    // THIS ONLY HAS TO BE DONE WHEN YOU'RE SENDING A FILE (PHOTO TO THE SERVER, everything else is just JSON
+    // because a file/photo is being sent to the SERVER
     const formData = new FormData();
     formData.append("photo", selectedFile);
 
@@ -41,17 +38,14 @@ function SignUpPage({handleSignUpOrLogin}) {
       formData.append(key, state[key]);
     }
 
-	// if you console.log(formData, ' <this won't yield anything useful')
-    // If you want to view the formData you need to loop over the object
+	  // if you console.log(formData, ' <this won't yield anything useful')
+    // to view the formData you need to loop over the object
     console.log(formData.forEach((item) => console.log(item)));
 
 	try {
 		
-		await userService.signup(formData); // this finishes, after the signup fetch call sets the token in localstorage
-		// after this we can route the user to whereever we want
-		// the jwt token is now stored in localstorage
-		handleSignUpOrLogin(); // this function is from the app, which gets the token and sets the user in the App component state
-		// switch the view, switch what page we are on
+		await userService.signup(formData); 
+		handleSignUpOrLogin(); 
 		navigate('/')
 
 	} catch(err){
@@ -59,13 +53,11 @@ function SignUpPage({handleSignUpOrLogin}) {
 		setError('Check your terminal, there was an error signing up')
 	}
 
-
+  
   }
 
   function handleChange(e) {
-    setState({
-      ...state,
-      [e.target.name]: e.target.value,
+    setState({...state,[e.target.name]: e.target.value,
     });
   }
 
@@ -77,8 +69,8 @@ function SignUpPage({handleSignUpOrLogin}) {
   return (
     <Grid textAlign="center" style={{ height: "100vh" }} verticalAlign="middle">
       <Grid.Column style={{ maxWidth: 450 }}>
-        <Header as="h2" color="purple" textAlign="center">
-          <Image src="#" /> Sign Up
+        <Header as="h2" color="black" textAlign="center">
+          <Image src="https://imgur.com/Tmzpkdd.jpg" /> Sign Up
         </Header>
         <Form autoComplete="off" onSubmit={handleSubmit}>
           <Segment stacked>
@@ -114,10 +106,10 @@ function SignUpPage({handleSignUpOrLogin}) {
               required
             />
             <Form.TextArea
-              label="About"
+              label="bio"
               name="bio"
               value={state.bio}
-              placeholder="Tells about yourself and any funfact for all movie watchers"
+              placeholder="Tell us more about your dogs..."
               onChange={handleChange}
             />
             <Form.Field>

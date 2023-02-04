@@ -3,7 +3,7 @@ import { Header, Segment, Image, Icon } from "semantic-ui-react";
 
 function PageHeader({ loggedUser, handleLogout, login,  }) {
   return (
-    <Segment clearing>
+    <Segment clearing fixed='top'>
       <Header as="h3" floated="right">
         <Link to="/">
           <Icon name="home"></Icon>

@@ -4,7 +4,7 @@ import MovieCard from '../MovieCard/MovieCard';
 // import MovieSearchCard from '../MovieCard/MovieSearchCard';
 import Loader from '../Loader/Loader';
 
-export default function MovieDisplay({movies, numPhotosCol, isProfile, loading, addLike, removeLike, deleteMovie, loggedUser}){
+export default function MovieDisplay({movies, numPhotosCol, isProfile, loading, addLike, removeLike,  loggedUser}){
 
     if(loading){
       return (
@@ -19,8 +19,8 @@ export default function MovieDisplay({movies, numPhotosCol, isProfile, loading, 
 
     return (
         <Card.Group itemsPerRow={numPhotosCol} stackable>
-        {movies.map((movie) => {
-          console.log(movie, "this is movie")
+        {movies && movies.map((movie) => {
+          
           return (
             <MovieCard
             movie={movie}
@@ -29,7 +29,7 @@ export default function MovieDisplay({movies, numPhotosCol, isProfile, loading, 
             addLike={addLike}
             removeLike={removeLike}
             loggedUser={loggedUser}
-            deleteMovie={deleteMovie}
+          
             />
           );
         })}

@@ -34,7 +34,7 @@ app.use(auth);
 // api routes must be before the "catch all" route
 import userRoutes from './routes/api/users.js';
 import movieRoutes from './routes/api/movies.js';
-import likeRoutes from './routes/api/likes.js'
+import likeRoutes from './routes/api/likes.js';
 
 app.use('/api/movies',movieRoutes);
 app.use('/api/users', userRoutes);

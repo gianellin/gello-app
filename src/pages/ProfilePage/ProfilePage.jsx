@@ -22,10 +22,21 @@ function ProfilePage({ loggedUser, handleLogout }) {
 
   console.log("username in Profile page -> ", username);
 
+  async function deleteMovie(movieId) {
+    try {
+        const response = await movieAPI.deleteMovie(movieId);
+        getMovies();
+
+    } catch(err){
+        console.log(err.message, 'error in deleting movie')
+        setError('error deleting movie -> try again')
+    }
+}
+
   async function addLike(movieId) {
     // postId exists in the card component
     try {
-      const response = await likesAPI.create(postId);
+      const response = await likesAPI.create(movieId);
       console.log(response, " response from likes APi");
       // update the cards with likes array
       getProfile(); // getProfile updates our state, so we'll see a change in the UI, heart will go to red
@@ -49,10 +60,11 @@ function ProfilePage({ loggedUser, handleLogout }) {
   async function getProfile() {
     try {
       // making the API CALL
+     
       const response = await userService.getProfile(username);
 
       setLoading(false); // set loading to false
-      setMovies(response.data);
+      setMovies(response.movies);
       setProfileUser(response.user);
       console.log(response, " <- data is getprofile");
     } catch (err) {
@@ -68,7 +80,7 @@ function ProfilePage({ loggedUser, handleLogout }) {
 
   useEffect(() => {
     getProfile();
-  }, [username]);
+  }, []);
 
   if (error) {
     return (
@@ -101,15 +113,18 @@ function ProfilePage({ loggedUser, handleLogout }) {
         </Grid.Column>
       </Grid.Row>
       <Grid.Row centered>
-        <Grid.Column style={{ maxWidth: 750 }}>
-          <MovieDisplay
+        <Grid.Column style={{ maxWidth: 1200 }}>
+
+        <MovieDisplay
             movies={movies}
-            numPhotosCol={3}
+            numPhotosCol={4}
             isProfile={true}
             loading={loading}
-            loggedUser={loggedUser}
             addLike={addLike}
             removeLike={removeLike}
+            loggedUser={loggedUser}
+            deleteMovie={deleteMovie}
+          
           />
         </Grid.Column>
       </Grid.Row>
