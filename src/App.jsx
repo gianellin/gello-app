@@ -6,9 +6,12 @@ import SignUpPage from "./pages/SignupPage/SignupPage";
 import LoginPage from "./pages/LoginPage/LoginPage";
 import FeedPage from "./pages/FeedPage/FeedPage";
 import ProfilePage from "./pages/ProfilePage/ProfilePage";
+import AddMovieFormPage from "./pages/AddMovieFormPage/AddMovieFormPage";
+// import MovieDetailPage from "./pages/MovieDetailPage/MovieDetailPage";
 // import the userService so we have a function (getUser) that can get the jwt token
 // from localstorage and decode it
 import userService from "./utils/userService";
+
 
 export default function App() {
   const [user, setUser] = useState(userService.getUser()); // if theres a token, grab it, if not the value will be null
@@ -32,6 +35,12 @@ export default function App() {
         <Route
           path="/"
           element={<FeedPage loggedUser={user} handleLogout={handleLogout} />}
+        />
+         <Route
+          path="/add"
+          element={
+            <AddMovieFormPage loggedUser={user} handleLogout={handleLogout} />
+          }
         />
         <Route
           path="/login"
@@ -61,7 +70,15 @@ export default function App() {
         path="/signup"
         element={<SignUpPage handleSignUpOrLogin={handleSignUpOrLogin} />}
       />
+      
       <Route path="/*" element={<Navigate to="/login" />} />
     </Routes>
+
   );
 }
+
+
+
+
+
+

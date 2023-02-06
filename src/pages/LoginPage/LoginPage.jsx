@@ -50,21 +50,26 @@ export default function LoginPage(props) {
       style={{ height: "100vh", width: "100vw" }}
       verticalAlign="middle"
     >
-      <Grid.Column style={{ maxWidth: 450 }}>
-        <Header as="h2" color="purple" textAlign="center">
-          <Image src="https://imgur.com/Tmzpkdd.jpg" /> Log-in to your account
+      <Grid.Column style={{ maxWidth: 350}}>
+        <Header as="h2" color="teal" textAlign="center">
+          <Image src="https://imgur.com/Tmzpkdd.jpg"  />  <br></br><br></br> Log-in
         </Header>
         <Form onSubmit={handleSubmit}>
           <Segment stacked>
-            <Form.Input
+            <Form.Input 
+              fluid icon='user' 
+              iconPosition='left' 
               type="email"
               name="email"
-              placeholder="email"
+              placeholder="Email"
               value={state.email}
               onChange={handleChange}
               required
             />
             <Form.Input
+              fluid
+              icon='lock'
+              iconPosition='left'
               name="password"
               type="password"
               placeholder="password"
@@ -73,7 +78,7 @@ export default function LoginPage(props) {
               required
             />
             <Button
-              color="purple"
+              color="teal"
               fluid
               size="large"
               type="submit"

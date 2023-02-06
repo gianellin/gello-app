@@ -44,8 +44,8 @@ function AddMovieForm({handleAddMovie}) {
           placeholder="movie poster"
           onChange={handleFileInput}
         />
-        <Button type="submit" className="btn">
-          ADD MOVIE
+        <Button type="submit" className="btn"href="/">
+          +
         </Button>
       </Form>
     </Segment>

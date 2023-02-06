@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 // we need to import the userService
 import userService from "../../utils/userService";
 
-function SignUpPage({handleSignUpOrLogin}) {
+export default function SignUpPage({handleSignUpOrLogin}) {
   const [state, setState] = useState({
     username: "",
     email: "",
@@ -67,10 +67,13 @@ function SignUpPage({handleSignUpOrLogin}) {
   }
 
   return (
-    <Grid textAlign="center" style={{ height: "100vh" }} verticalAlign="middle">
+    <Grid  textAlign="center" style={{ height: "100vh" }}
+    verticalAlign="middle" >
+      
       <Grid.Column style={{ maxWidth: 450 }}>
-        <Header as="h2" color="black" textAlign="center">
-          <Image src="https://imgur.com/Tmzpkdd.jpg" /> Sign Up
+        <Header as="h2" color="teal" textAlign="center">
+          <Image src="https://imgur.com/Tmzpkdd.jpg" /> <br></br><br></br>
+          Sign Up
         </Header>
         <Form autoComplete="off" onSubmit={handleSubmit}>
           <Segment stacked>
@@ -131,4 +134,4 @@ function SignUpPage({handleSignUpOrLogin}) {
   );
 }
 
-export default SignUpPage;
+

@@ -1,32 +1,39 @@
+# gello
 
-# Mern Boilerplate
+## Introduction
 
-This is a mern Boilerplate using vite to compile the frontend.  
+Gello is an application that allows you to track, rate, and share both the movies you like in one seamless single page application. Gello, a universe of film to explore!
 
-##### Things to note
+<img src="" alt="Signup Page" width="600"/>
+<img src="" alt="Library Page" width="600"/>
+<img src="" alt="Compare Page" width="600"/>
 
-1. The server code is using `import`, currently you have to add the file extension in the server code. 
+## Planning
 
-2.  Note the `index.html` for the code needed to be added for hot reloading and etc... 
+[Trello Board](https://trello.com/invite/b/55Q6wa90/ATTI088e3813f57a04cd87d918f518f7483bCA46D85F/gello)
 
-3. Code is setup to use `JWT` auth
-
-4. Take a look at the server.js code, there is some es6 things to setup `__dirname`
+<img src="" alt="Entity Relationship Diagram" width="600"/>
 
 
-#### Setup 
+### Deployed Link:
 
-1. ```npm install```
-2. ```npm run dev```
-3. setup `.env` file 
+[gello]()
 
-- .env file 
+## Technologies
 
-```
-SECRET=seiRocks!
-```
+- React
+- HTML/CSS/JS
+- Node/Express
+- MongoDB
+- JSON Web Tokens
+- Bcrypt
 
-##### Starting the App
 
-- One terminal
-command - ```npm run dev```
+## Future Enhancements
+
+- Mobile responsiveness
+- Add sort options to both library and compare functionalities
+- Dashboard to display data on user viewing habits
+- Allow for comparison between two users or more.
+- Add more edit features.
+- Connect to movie DB for a more seamless experience.

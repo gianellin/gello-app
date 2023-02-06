@@ -3,17 +3,15 @@ import { Header, Segment, Image, Icon } from "semantic-ui-react";
 
 function PageHeader({ loggedUser, handleLogout, login,  }) {
   return (
-    <Segment clearing fixed='top'>
+    <Segment clearing>
       <Header as="h3" floated="right">
         <Link to="/">
-          <Icon name="home"></Icon>
+          <Icon name="home" color="teal"></Icon>
         </Link>
-        <Link to="" onClick={handleLogout}>
+        <Link to="" onClick={handleLogout} class="ui teal header" >
           Logout
         </Link>
-        <Link to="">
-            Search
-        </Link>
+        
       </Header>
       <Header as="h3" floated="left">
         <Link to={`/${loggedUser?.username}`}>

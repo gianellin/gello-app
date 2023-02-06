@@ -28,7 +28,7 @@ export default function MovieDisplay({movies, numPhotosCol, isProfile, loading, 
             isProfile={isProfile}
             addLike={addLike}
             removeLike={removeLike}
-            loggedUser={loggedUser}
+            loggedUser={loggedUser} 
           
             />
           );

@@ -22,6 +22,8 @@ function ProfilePage({ loggedUser, handleLogout }) {
 
   console.log("username in Profile page -> ", username);
 
+  //delete movie from profile
+  
   async function deleteMovie(movieId) {
     try {
         const response = await movieAPI.deleteMovie(movieId);
@@ -101,19 +103,19 @@ function ProfilePage({ loggedUser, handleLogout }) {
   }
 
   return (
-    <Grid>
+    <Grid centered>
       <Grid.Row>
-        <Grid.Column>
+        <Grid.Column >
           <PageHeader handleLogout={handleLogout} loggedUser={loggedUser}/>
         </Grid.Column>
       </Grid.Row>
       <Grid.Row>
         <Grid.Column>
-          <ProfileBio user={profileUser} />
+          <ProfileBio user={profileUser}/>
         </Grid.Column>
       </Grid.Row>
       <Grid.Row centered>
-        <Grid.Column style={{ maxWidth: 1200 }}>
+        <Grid.Column style={{ maxWidth: 750 }}>
 
         <MovieDisplay
             movies={movies}
