@@ -17,7 +17,7 @@ Gello is an application that allows you to track, rate, and share both the movie
 
 ### Deployed Link:
 
-[gello]()
+[gello](https://dull-teal-turkey-wig.cyclic.app)
 
 ## Technologies
 
