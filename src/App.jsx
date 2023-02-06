@@ -6,8 +6,8 @@ import SignUpPage from "./pages/SignupPage/SignupPage";
 import LoginPage from "./pages/LoginPage/LoginPage";
 import FeedPage from "./pages/FeedPage/FeedPage";
 import ProfilePage from "./pages/ProfilePage/ProfilePage";
-import AddMovieFormPage from "./pages/AddMovieFormPage/AddMovieFormPage";
-// import MovieDetailPage from "./pages/MovieDetailPage/MovieDetailPage";
+// import AddMovieFormPage from "./pages/AddMovieFormPage/AddMovieFormPage";
+
 // import the userService so we have a function (getUser) that can get the jwt token
 // from localstorage and decode it
 import userService from "./utils/userService";
@@ -36,12 +36,12 @@ export default function App() {
           path="/"
           element={<FeedPage loggedUser={user} handleLogout={handleLogout} />}
         />
-         <Route
+         {/* <Route
           path="/add"
           element={
             <AddMovieFormPage loggedUser={user} handleLogout={handleLogout} />
           }
-        />
+        /> */}
         <Route
           path="/login"
           element={<LoginPage handleSignUpOrLogin={handleSignUpOrLogin} />}

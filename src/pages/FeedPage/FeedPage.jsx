@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import PageHeader from "../../components/PageHeader/PageHeader";
-// import AddMovieForm from "../../components/AddMovieForm/AddMovieForm";
-// import AddMovie from "../../components/AddMovieForm/AddMovie";
+import AddMovieForm from "../../components/AddMovieForm/AddMovieForm";
 import MovieDisplay from "../../components/MovieDisplay/MovieDisplay";
 import Loader from "../../components/Loader/Loader"
 import { Button, Grid, GridColumn } from "semantic-ui-react";
@@ -94,17 +93,17 @@ function FeedPage({loggedUser, handleLogout}) {
   return (
     <Grid centered >
       <Grid.Row>
-        <Grid.Column style={{ height: "20vh", width: "100vw" }}
-        verticalAlign="middle">>
+        <Grid.Column style={{ height: "10vh", width: "100vw" }}
+        verticalAlign="middle">
         <PageHeader handleLogout={handleLogout} loggedUser={loggedUser} />
         </Grid.Column>
       </Grid.Row>
       <br></br>
-      <Button type="submit" href="/add" > Add a Movie </Button>
+      {/* <Button type="submit" href="/add" > Add a Movie </Button> */}
       <Grid.Row>
         <Grid.Column style={{ maxWidth: 350 }}>
           {/* <AddMovie /> */}
-          {/* <AddMovieForm handleAddMovie={handleAddMovie} /> */}
+          <AddMovieForm handleAddMovie={handleAddMovie} />
           
         </Grid.Column>
       </Grid.Row>
@@ -117,7 +116,7 @@ function FeedPage({loggedUser, handleLogout}) {
             isProfile={false}
             loading={loading}
             addLike={addLike}
-            removeLike={removeLike}
+            removeLike={removeLike} 
             deleteMovie={deleteMovie}
             loggedUser={loggedUser}
           />
